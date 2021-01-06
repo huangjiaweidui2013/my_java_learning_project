@@ -173,7 +173,7 @@ spring:
       # 路由标识（id：标识，具有唯一性）   转发指定服务并传入参数
       - id: route_addRequestParameter
         # 目标服务地址（uri：地址，请求转发后的地址）
-        uri: lb://gateway-service
+        uri: lb://gateway-service-${COMPUTERNAME}
         # 路由条件（predicates：断言，匹配 HTTP 请求内容）
         predicates:
         ## 匹配 GET 请求
@@ -221,7 +221,7 @@ spring:
       # 路由标识（id：标识，具有唯一性）   熔断
       - id: route_hystrix
         # 目标服务地址（uri：地址，请求转发后的地址）
-        uri: lb://gateway-service
+        uri: lb://gateway-service-${COMPUTERNAME}
         # 路由条件（predicates：断言，匹配 HTTP 请求内容）
         predicates:
         ## 匹配 GET 请求
@@ -279,7 +279,7 @@ spring:
       # 路由标识（id：标识，具有唯一性）   限流
       - id: route_requestRateLimiter
         # 目标服务地址（uri：地址，请求转发后的地址）
-        uri: lb://gateway-service
+        uri: lb://gateway-service-${COMPUTERNAME}
         # 路由条件（predicates：断言，匹配 HTTP 请求内容）
         predicates:
         ## 匹配 GET 请求
@@ -340,7 +340,7 @@ spring:
       # 路由标识（id：标识，具有唯一性）   综合
       - id: route_all
         # 目标服务地址（uri：地址，请求转发后的地址）
-        uri: lb://gateway-service
+        uri: lb://gateway-service-${COMPUTERNAME}
         # 路由条件（predicates：断言，匹配 HTTP 请求内容）
         predicates:
         ## 转发地址格式为 uri/routeAll，/all 部分会被下面的过滤器给截取掉
